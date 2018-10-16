@@ -18,15 +18,30 @@ void showMenu()
   printf("\tMultiply (2)\n");
 }
 
-// Reads the two needed numbers
-void readNumbers(double* number1, double* number2)
+int getOperationInput()
 {
-  printf("Number 1: ");
-  scanf("%lf", number1);
-  printf("Number 2: ");
+  int input;
+
+  printf("Enter your choice: ");
+  scanf("%d", &input);
+
+  if(input > -2 && input < 5)
+  {
+    return input;
+  }
+  else
+  {
+    return -1;
+  }
+}
+
+// Reads the two needed numbers
+ver 2: ");
   scanf("%lf", number2);
 }
 
 int main(int argc, char const *argv[]) {
   showMenu();
+  int input = getOperationInput();
+  printf("%d", input);
 }
