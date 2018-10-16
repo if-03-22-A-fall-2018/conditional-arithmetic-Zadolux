@@ -36,12 +36,19 @@ int getOperationInput()
 }
 
 // Reads the two needed numbers
-ver 2: ");
+void readNumbers(double* number1, double* number2)
+{
+  printf("Select a number in the range (1-100): ");
+  scanf("%lf", number1);
+  printf("Select a number in the range (1-100): ");
   scanf("%lf", number2);
 }
 
 int main(int argc, char const *argv[]) {
   showMenu();
   int input = getOperationInput();
-  printf("%d", input);
+
+  double number1;
+  double number2;
+  readNumbers(&number1, &number2);
 }
