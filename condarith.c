@@ -22,33 +22,29 @@ int getOperationInput()
 {
   int input;
 
-  printf("Enter your choice: ");
-  scanf("%d", &input);
+  do {
+    printf("Enter your choice: ");
+    scanf("%d", &input);
+  } while(!(input >= 1 && input <= 2));
 
-  if(input > -2 && input < 5)
-  {
-    return input;
-  }
-  else
-  {
-    return -1;
-  }
+  return input;
 }
 
-// Reads the two needed numbers
-void readNumbers(double* number1, double* number2)
+// Reads the range
+int readRange()
 {
-  printf("Select a number in the range (1-100): ");
-  scanf("%lf", number1);
-  printf("Select a number in the range (1-100): ");
-  scanf("%lf", number2);
+  int range = 0;
+
+  do {
+    printf("Select a number in the range (1-100): ");
+    scanf("%d", &range);
+  } while(!(range >= 1 && range <= 100));
+
+  return range;
 }
 
 int main(int argc, char const *argv[]) {
   showMenu();
   int input = getOperationInput();
-
-  double number1;
-  double number2;
-  readNumbers(&number1, &number2);
+  int range = readRange();
 }
