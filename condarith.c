@@ -11,6 +11,9 @@
 */
 #include <stdio.h>
 
+#define ADD 1
+#define MULTIPLY 2
+
 void showMenu()
 {
   printf("Choose one of the following operations:\n");
@@ -25,7 +28,7 @@ int getOperationInput()
   do {
     printf("Enter your choice: ");
     scanf("%d", &input);
-  } while(!(input >= 1 && input <= 2));
+  } while(!(input >= ADD && input <= MULTIPLY));
 
   return input;
 }
@@ -43,8 +46,53 @@ int readRange()
   return range;
 }
 
+int addRange(int range)
+{
+  long result = 0;
+
+  for(int i = 3; i <= range; i++)
+  {
+    int modulo3 = i % 3;
+    int modulo5 = i % 5;
+
+    if(modulo3 == 0 || modulo5 == 0)
+    {
+      result += i;
+    }
+  }
+
+  return result;
+}
+
+int executeOperation(int operation, int range)
+{
+  int result = 0;
+
+  switch(operation)
+  {
+    case ADD:
+      result = addRange(range);
+    break;
+    case MULTIPLY:
+      printf("Multiply!");
+    break;
+  }
+
+  return result;
+}
+
+unsigned char isOverflow(int range)
+{
+  if(range > 0)
+    return 0;
+  else
+    return 1;
+}
+
 int main(int argc, char const *argv[]) {
   showMenu();
-  int input = getOperationInput();
+  int operation = getOperationInput();
   int range = readRange();
+
+  int result = executeOperation(operation, range);
 }
