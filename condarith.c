@@ -98,7 +98,7 @@ int executeOperation(int operation, int range)
 }
 
 // Checks if an overflow is going to happen
-unsigned int isOverflow(int range, int operation)
+unsigned char isOverflow(int range, int operation)
 {
   if((operation == MULTIPLY && range > 0) || (operation == ADD && range >= 0))
     return 0;
