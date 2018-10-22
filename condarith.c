@@ -1,12 +1,12 @@
 /*----------------------------------------------------------
  *				HTBLA-Leonding / Class: 2AHIF
  * ---------------------------------------------------------
- * Exercise Number: 3
+ * Exercise Number: 4
  * Title:			Conditional arithmetic
  * Author:	  Wallinger Marc
  * ----------------------------------------------------------
  * Description:
- * Exercises for pointers (call by ref, val, ...)
+ * Exercises for pointers, loops and overflow detection
  * ----------------------------------------------------------
 */
 #include <stdio.h>
@@ -14,6 +14,7 @@
 #define ADD 1
 #define MULTIPLY 2
 
+// Shows the menu
 void showMenu()
 {
   printf("Choose one of the following operations:\n");
@@ -21,6 +22,7 @@ void showMenu()
   printf("\tMultiply (2)\n");
 }
 
+// Gets an operation int
 int getOperationInput()
 {
   int input;
