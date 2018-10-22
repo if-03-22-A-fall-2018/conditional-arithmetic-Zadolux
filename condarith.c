@@ -46,9 +46,15 @@ int readRange()
   return range;
 }
 
-int addRange(int range)
+// Calculates (both add or multiply)
+long calcRange(int range, int operation)
 {
   long result = 0;
+
+  if(operation == MULTIPLY)
+  {
+    result = 1;
+  }
 
   for(int i = 3; i <= range; i++)
   {
@@ -57,33 +63,42 @@ int addRange(int range)
 
     if(modulo3 == 0 || modulo5 == 0)
     {
-      result += i;
+      if(operation == ADD)
+      {
+        result += i;
+      }
+      else
+      {
+        result *= i;
+      }
     }
   }
 
   return result;
 }
 
+// Selects which action to execute
 int executeOperation(int operation, int range)
 {
-  int result = 0;
+  long result = 0;
 
   switch(operation)
   {
     case ADD:
-      result = addRange(range);
+      result = calcRange(range, ADD);
     break;
     case MULTIPLY:
-      printf("Multiply!");
+      result = calcRange(range, MULTIPLY);
     break;
   }
 
   return result;
 }
 
-unsigned char isOverflow(int range)
+// Checks if an overflow is going to happen
+unsigned int isOverflow(int range, int operation)
 {
-  if(range > 0)
+  if((operation == MULTIPLY && range > 0) || (operation == ADD && range >= 0))
     return 0;
   else
     return 1;
@@ -94,5 +109,14 @@ int main(int argc, char const *argv[]) {
   int operation = getOperationInput();
   int range = readRange();
 
-  int result = executeOperation(operation, range);
+  long result = executeOperation(operation, range);
+
+  if(isOverflow(result, operation) == 0)
+  {
+    printf("The result is: %ld\n", result);
+  }
+  else
+  {
+    printf("Overflow!\n");
+  }
 }
